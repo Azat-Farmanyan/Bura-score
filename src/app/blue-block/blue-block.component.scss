@@ -1,0 +1,31 @@
+.blue-block {
+  background-color: #0099E9;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .up {
+    transform: rotate(180deg);
+
+  }
+
+  .score {
+    font-size: 96px;
+    text-align: center;
+  }
+
+  .down {}
+
+  .up,
+  .down {
+    width: 100%;
+    padding: 100px 0;
+
+    & img {
+      width: 50px;
+    }
+  }
+}

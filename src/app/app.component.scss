@@ -1,0 +1,25 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .reset {
+        position: fixed;
+        top: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background-color: #ffffff4c;
+        border-radius: 5px;
+        padding: 12px 50px;
+        font-size: 18px;
+    }
+}
+
+.move-up {}
+
+.down {}
+
+.score {}

@@ -1,5 +1,7 @@
-<div class="red-block">
-    <button class="up" (click)="scoreService.redPlus()"><img src="../../assets/arrow.png" alt="up"></button>
-    <div class="score">{{ scoreService.red | async }}</div>
-    <button class="down" (click)="scoreService.redMinus()"><img src="../../assets/arrow.png" alt="up"></button>
+<div class="red-block" [ngStyle]="{ 'background-color': groupName === 'red' ? '#E0473F' : '#0099E9' }">
+    <button class="up" (click)="plus()"><img src="../../assets/arrow.png" alt="up"></button>
+    <div class="score" [ngClass]="{'up-move': upMove, 'down-move': downMove, 'go-up': goUp, 'go-down': goDown}">
+        {{score}}
+    </div>
+    <button class="down" (click)="minus()"><img src="../../assets/arrow.png" alt="up"></button>
 </div>

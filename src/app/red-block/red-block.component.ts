@@ -1,17 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { ScoreService } from '../score.service';
-import { Subscription } from 'rxjs';
+import { Subscription, delay } from 'rxjs';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-red-block',
+  selector: 'app-block',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './red-block.component.html',
   styleUrl: './red-block.component.scss',
 })
-export class RedBlockComponent implements OnInit, OnDestroy {
+export class BlockComponent implements OnInit, OnChanges, OnDestroy {
+  @Input() groupName: 'red' | 'blue' = 'red';
+
   scoreService = inject(ScoreService);
 
   isUp: boolean = false;
@@ -22,17 +32,58 @@ export class RedBlockComponent implements OnInit, OnDestroy {
 
   allowMove = false;
 
-  ngOnInit(): void {
-    this.scoreSubs = this.scoreService.red.subscribe(
-      (res) => (this.score = res)
-    );
+  upMove = false;
+  downMove = false;
+
+  goUp = false;
+  goDown = false;
+
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    if (this.groupName === 'red') {
+      this.scoreSubs = this.scoreService.red
+        .pipe(delay(500))
+        .subscribe((res) => (this.score = res));
+    } else {
+      this.scoreSubs = this.scoreService.blue
+        .pipe(delay(500))
+        .subscribe((res) => (this.score = res));
+    }
   }
 
   plus() {
-    this.scoreService.redPlus();
+    this.groupName === 'red'
+      ? this.scoreService.redPlus()
+      : this.scoreService.bluePlus();
+
+    this.upMove = true;
+    setTimeout(() => {
+      this.upMove = false;
+    }, 1000);
+
+    this.goUp = true;
+    setTimeout(() => {
+      this.goUp = false;
+    }, 300);
   }
+
   minus() {
-    this.scoreService.redMinus();
+    if (this.score > 0) {
+      this.groupName === 'red'
+        ? this.scoreService.redMinus()
+        : this.scoreService.blueMinus();
+
+      this.downMove = true;
+      setTimeout(() => {
+        this.downMove = false;
+      }, 1000);
+
+      this.goDown = true;
+      setTimeout(() => {
+        this.goDown = false;
+      }, 300);
+    }
   }
 
   ngOnDestroy(): void {

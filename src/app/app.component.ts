@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { RedBlockComponent } from './red-block/red-block.component';
-import { BlueBlockComponent } from './blue-block/blue-block.component';
+import { BlockComponent } from './red-block/red-block.component';
 import { ScoreService } from './score.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RedBlockComponent, BlueBlockComponent],
+  imports: [CommonModule, RouterOutlet, BlockComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

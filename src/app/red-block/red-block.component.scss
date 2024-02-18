@@ -10,13 +10,12 @@
 
   .up {
     transform: rotate(180deg);
-
   }
 
   .score {
     font-size: 96px;
     text-align: center;
-
+    transition: all 0.3s ease-in-out;
   }
 
   .down {}
@@ -29,5 +28,32 @@
     & img {
       width: 50px;
     }
+  }
+
+  .down-move,
+  .up-move {
+    transition: all 0.3s ease-in-out;
+  }
+
+
+  .up-move {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  .go-up {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+
+  .down-move {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  .go-down {
+    transform: translateY(50px);
+    opacity: 0;
   }
 }

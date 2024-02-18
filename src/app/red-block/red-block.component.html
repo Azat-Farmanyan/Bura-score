@@ -1,6 +1,12 @@
 <div class="red-block" [ngStyle]="{ 'background-color': groupName === 'red' ? '#E0473F' : '#0099E9' }">
     <button class="up" (click)="plus()"><img src="../../assets/arrow.png" alt="up"></button>
-    <div class="score" [ngClass]="{'up-move': upMove, 'down-move': downMove, 'go-up': goUp, 'go-down': goDown}">
+
+    <div class="score" [ngClass]="{
+            'up-move': upMove,
+            'down-move': downMove, 
+            'go-up': goUp, 
+            'go-down': goDown,
+            }">
         {{score}}
     </div>
     <button class="down" (click)="minus()"><img src="../../assets/arrow.png" alt="up"></button>

@@ -15,5 +15,9 @@
         border-radius: 5px;
         padding: 12px 50px;
         font-size: 18px;
+
+        &:active {
+            background-color: #ffffff7e;
+        }
     }
 }

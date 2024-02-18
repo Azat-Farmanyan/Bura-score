@@ -12,27 +12,37 @@
     transform: rotate(180deg);
   }
 
+
   .score {
     font-size: 96px;
     text-align: center;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 
-  .down {}
+
+
 
   .up,
   .down {
     width: 100%;
-    padding: 100px 0;
+    padding: 30px 0;
 
     & img {
       width: 50px;
     }
   }
 
+  .up {
+    margin-bottom: 50px;
+  }
+
+  .down {
+    margin-top: 50px;
+  }
+
   .down-move,
   .up-move {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
 

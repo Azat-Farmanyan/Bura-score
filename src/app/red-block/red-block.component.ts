@@ -43,11 +43,11 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges(): void {
     if (this.groupName === 'red') {
       this.scoreSubs = this.scoreService.red
-        .pipe(delay(500))
+        .pipe(delay(200))
         .subscribe((res) => (this.score = res));
     } else {
       this.scoreSubs = this.scoreService.blue
-        .pipe(delay(500))
+        .pipe(delay(200))
         .subscribe((res) => (this.score = res));
     }
   }
@@ -60,12 +60,12 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
     this.upMove = true;
     setTimeout(() => {
       this.upMove = false;
-    }, 1000);
+    }, 300);
 
     this.goUp = true;
     setTimeout(() => {
       this.goUp = false;
-    }, 300);
+    }, 100);
   }
 
   minus() {
@@ -77,12 +77,12 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
       this.downMove = true;
       setTimeout(() => {
         this.downMove = false;
-      }, 1000);
+      }, 300);
 
       this.goDown = true;
       setTimeout(() => {
         this.goDown = false;
-      }, 300);
+      }, 100);
     }
   }
 

@@ -52,10 +52,10 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  plus() {
+  plus(double: boolean = false) {
     this.groupName === 'red'
-      ? this.scoreService.redPlus()
-      : this.scoreService.bluePlus();
+      ? this.scoreService.redPlus(double)
+      : this.scoreService.bluePlus(double);
 
     this.upMove = true;
     setTimeout(() => {
@@ -68,11 +68,11 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
     }, 100);
   }
 
-  minus() {
+  minus(double: boolean = false) {
     if (this.score > 0) {
       this.groupName === 'red'
-        ? this.scoreService.redMinus()
-        : this.scoreService.blueMinus();
+        ? this.scoreService.redMinus(double)
+        : this.scoreService.blueMinus(double);
 
       this.downMove = true;
       setTimeout(() => {

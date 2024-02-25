@@ -9,7 +9,7 @@ import {
   inject,
 } from '@angular/core';
 import { ScoreService } from '../score.service';
-import { Subscription, delay } from 'rxjs';
+import { Subscription, debounceTime, delay, map } from 'rxjs';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
@@ -44,11 +44,23 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
     if (this.groupName === 'red') {
       this.scoreSubs = this.scoreService.red
         .pipe(delay(200))
-        .subscribe((res) => (this.score = res));
+        .subscribe((res) => {
+          if (res >= 11) {
+            const audio = new Audio('../../assets/sounds/winning-sound.mp3');
+            audio.play();
+          }
+          this.score = res;
+        });
     } else {
       this.scoreSubs = this.scoreService.blue
         .pipe(delay(200))
-        .subscribe((res) => (this.score = res));
+        .subscribe((res) => {
+          if (res >= 11) {
+            const audio = new Audio('../../assets/sounds/winning-sound.mp3');
+            audio.play();
+          }
+          this.score = res;
+        });
     }
   }
 

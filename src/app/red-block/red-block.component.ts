@@ -49,6 +49,7 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
             const audio = new Audio('../../assets/sounds/winning-sound.mp3');
             audio.play();
           }
+
           this.score = res;
         });
     } else {

@@ -10,14 +10,17 @@ export class ScoreService {
   constructor() {}
 
   reset() {
+    if (this.blue.value > 0 || this.red.value > 0) {
+      const audio = new Audio('../assets/sounds/coin-up.mp3');
+      audio.play();
+    }
     this.red.next(0);
     this.blue.next(0);
   }
 
   bluePlus(double: boolean = false) {
     if (this.blue.value < 10) {
-      const audio = new Audio('../assets/sounds/add.mp3');
-      audio.play();
+      this.blueSound();
     }
     double
       ? this.blue.next(this.blue.value + 2)
@@ -25,8 +28,7 @@ export class ScoreService {
   }
 
   blueMinus(double: boolean = false) {
-    const audio = new Audio('../assets/sounds/remove.mp3');
-    audio.play();
+    this.blueSound();
     if (double) {
       this.blue.value >= 2
         ? this.blue.next(this.blue.value - 2)
@@ -39,8 +41,7 @@ export class ScoreService {
 
   redPlus(double: boolean = false) {
     if (this.red.value < 10) {
-      const audio = new Audio('../assets/sounds/add.mp3');
-      audio.play();
+      this.redSound();
     }
     double
       ? this.red.next(this.red.value + 2)
@@ -48,8 +49,8 @@ export class ScoreService {
   }
 
   redMinus(double: boolean = false) {
-    const audio = new Audio('../assets/sounds/remove.mp3');
-    audio.play();
+    this.redSound();
+
     if (double) {
       this.red.value >= 2
         ? this.red.next(this.red.value - 2)
@@ -58,5 +59,16 @@ export class ScoreService {
       this.red.next(this.red.value - 1);
     }
     if (this.red.value < 0) this.red.next(0);
+  }
+
+  redSound() {
+    const audio = new Audio('../assets/sounds/add-v3.mp3');
+    audio.play();
+    console.log('red');
+  }
+  blueSound() {
+    const audio = new Audio('../assets/sounds/add-v2.mp3');
+    audio.play();
+    console.log('blue');
   }
 }

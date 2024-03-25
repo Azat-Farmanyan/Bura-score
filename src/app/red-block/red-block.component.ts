@@ -65,10 +65,10 @@ export class BlockComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  plus(double: boolean = false) {
+  plus(double: boolean = false, triple: boolean = false) {
     this.groupName === 'red'
-      ? this.scoreService.redPlus(double)
-      : this.scoreService.bluePlus(double);
+      ? this.scoreService.redPlus(double, triple)
+      : this.scoreService.bluePlus(double, triple);
 
     this.upMove = true;
     setTimeout(() => {

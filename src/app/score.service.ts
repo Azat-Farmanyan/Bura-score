@@ -18,13 +18,15 @@ export class ScoreService {
     this.blue.next(0);
   }
 
-  bluePlus(double: boolean = false) {
+  bluePlus(double: boolean = false, triple: boolean = false) {
     if (this.blue.value < 10) {
       this.blueSound();
     }
-    double
-      ? this.blue.next(this.blue.value + 2)
-      : this.blue.next(this.blue.value + 1);
+    if (double) {
+      this.blue.next(this.blue.value + 2);
+    } else if (triple) {
+      this.blue.next(this.blue.value + 3);
+    } else this.blue.next(this.blue.value + 1);
   }
 
   blueMinus(double: boolean = false) {
@@ -39,13 +41,15 @@ export class ScoreService {
     if (this.blue.value < 0) this.blue.next(0);
   }
 
-  redPlus(double: boolean = false) {
+  redPlus(double: boolean = false, triple: boolean = false) {
     if (this.red.value < 10) {
       this.redSound();
     }
-    double
-      ? this.red.next(this.red.value + 2)
-      : this.red.next(this.red.value + 1);
+    if (double) {
+      this.red.next(this.red.value + 2);
+    } else if (triple) {
+      this.red.next(this.red.value + 3);
+    } else this.red.next(this.red.value + 1);
   }
 
   redMinus(double: boolean = false) {
